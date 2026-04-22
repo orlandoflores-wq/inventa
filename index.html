@@ -263,6 +263,15 @@ table.dataTable tbody tr:hover {
                         <label>Usuario Responsable</label>
                         <input type="text" name="usuario" placeholder="Nombre del trabajador" required>
                     </div>
+                    <div class="form-group full-width">
+                        <label>Estado</label>
+                        <select name="estado" required>
+                            <option value="" disabled selected>Seleccione el piso...</option>
+                            <option value="activo">activo</option>
+                            <option value="inactivo">inactivo</option>
+                         
+                        </select>
+                    </div>
                     
                     <div class="form-group full-width">
                         <label>Notas Técnicas</label>
@@ -296,6 +305,7 @@ table.dataTable tbody tr:hover {
                     <th>PISO</th>
                     <th>ÁREA</th>
                     <th>USUARIO</th>
+                    <th>ESTADO</th>
                     <th>ACCIONES</th>
                 </tr>
             </thead>
@@ -489,6 +499,12 @@ function eliminar(btn, id) {
 </select><br>
         <input type="text" id="edit_area" placeholder="Área"><br>
         <input type="text" id="edit_usuario" placeholder="Usuario"><br>
+          <select id="edit_estado">
+    <option value="">Seleccione el piso...</option>
+    <option value="Piso 1">activo</option>
+    <option value="Piso 2">inactivo</option>
+    
+</select><br>
         <input type="text" id="edit_notas" placeholder="Notas"><br><br>
 
         <button id="btnGuardarEdit" onclick="guardarEdicion()" style="background:#4a86e8;">
