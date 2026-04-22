@@ -162,10 +162,17 @@ table.dataTable thead th {
 table.dataTable tbody td { 
     padding: 14px 18px !important;
     border-bottom: 1px solid #3e4b5b !important; 
-    white-space: nowrap; /* 👈 datos en una sola línea */
+    white-space: nowrap;
     min-width: 130px;
 }
 
+/* 👇 SOLO estas columnas pueden romper línea */
+td:nth-child(5),
+td:nth-child(6) {
+    white-space: normal !important;
+    word-break: break-word;
+    max-width: 220px;
+}
 /* FILAS */
 table.dataTable tbody tr {
     border-bottom: 1px solid #4a5568;
