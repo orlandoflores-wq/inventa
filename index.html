@@ -293,7 +293,7 @@ table.dataTable tbody tr:hover {
             if(tabId === 'consulta') cargarDatos();
         }
 
-      document.getElementById('formInventario').addEventListener('submit', function(e) {
+   document.getElementById('formInventario').addEventListener('submit', function(e) {
     e.preventDefault();
 
     const btn = document.getElementById('btnEnviar');
@@ -315,10 +315,9 @@ table.dataTable tbody tr:hover {
 
     fetch(URL_APP_SCRIPT, {
         method: 'POST',
-        headers: { "Content-Type": "application/json" },
+        mode: 'no-cors', // 🔥 clave
         body: JSON.stringify(data)
     })
-    .then(res => res.json())
     .then(() => {
         alert("✅ Guardado correctamente");
         this.reset();
