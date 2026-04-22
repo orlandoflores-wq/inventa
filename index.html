@@ -402,11 +402,11 @@ function editar(reg) {
         notas: document.getElementById('edit_notas').value
     };
 
-    fetch(URL_APP_SCRIPT, {
-        method: 'POST',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-    })
+   fetch(URL_APP_SCRIPT, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: JSON.stringify(data)
+})
     .then(() => {
         cerrarModal();
         cargarDatos();
