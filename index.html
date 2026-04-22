@@ -379,17 +379,42 @@ table.dataTable tbody tr:hover {
             }
         }
 function editar(reg) {
-    openTab('registro');
+    document.getElementById('modalEditar').style.display = "flex";
 
-    document.querySelector('[name="pc_nombre"]').value = reg.nombre_de_pc;
-    document.querySelector('[name="serie"]').value = reg.serie;
-    document.querySelector('[name="piso"]').value = reg.piso;
-    document.querySelector('[name="area"]').value = reg.area;
-    document.querySelector('[name="usuario"]').value = reg.usuario;
-    document.querySelector('[name="notas"]').value = reg.notas;
+    document.getElementById('edit_id').value = reg.id_activo;
+    document.getElementById('edit_pc').value = reg.nombre_de_pc;
+    document.getElementById('edit_serie').value = reg.serie;
+    document.getElementById('edit_piso').value = reg.piso;
+    document.getElementById('edit_area').value = reg.area;
+    document.getElementById('edit_usuario').value = reg.usuario;
+    document.getElementById('edit_notas').value = reg.notas;
+}
 
-    // Guardamos el ID temporalmente
-    document.getElementById('formInventario').dataset.id = reg.id_activo;
+        function guardarEdicion() {
+    const data = {
+        action: "editar",
+        id: document.getElementById('edit_id').value,
+        pc_nombre: document.getElementById('edit_pc').value,
+        serie: document.getElementById('edit_serie').value,
+        piso: document.getElementById('edit_piso').value,
+        area: document.getElementById('edit_area').value,
+        usuario: document.getElementById('edit_usuario').value,
+        notas: document.getElementById('edit_notas').value
+    };
+
+    fetch(URL_APP_SCRIPT, {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    })
+    .then(() => {
+        cerrarModal();
+        cargarDatos();
+    });
+}
+
+        function cerrarModal() {
+    document.getElementById('modalEditar').style.display = "none";
 }
 function eliminar(id) {
     if (!confirm("¿Eliminar este registro?")) return;
@@ -407,5 +432,26 @@ function eliminar(id) {
 }
         
     </script>
+
+        <div id="modalEditar" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:9999;">
+    
+    <div style="background:#2d3748; padding:20px; border-radius:10px; width:90%; max-width:500px;">
+        
+        <h3 style="color:white;">✏️ Editar Registro</h3>
+
+        <input type="hidden" id="edit_id">
+
+        <input type="text" id="edit_pc" placeholder="Nombre PC"><br>
+        <input type="text" id="edit_serie" placeholder="Serie"><br>
+        <input type="text" id="edit_piso" placeholder="Piso"><br>
+        <input type="text" id="edit_area" placeholder="Área"><br>
+        <input type="text" id="edit_usuario" placeholder="Usuario"><br>
+        <input type="text" id="edit_notas" placeholder="Notas"><br><br>
+
+        <button onclick="guardarEdicion()" style="background:#4a86e8;">💾 Guardar</button>
+        <button onclick="cerrarModal()" style="background:#e74c3c;">❌ Cancelar</button>
+
+    </div>
+</div>
 </body>
 </html>
