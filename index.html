@@ -191,6 +191,22 @@ table.dataTable tbody tr:hover {
         min-width: 120px;
     }
 }
+
+        .spinner {
+    border: 3px solid rgba(255,255,255,0.2);
+    border-top: 3px solid white;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 0.7s linear infinite;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
     </style>
 </head>
 <body>
@@ -353,7 +369,7 @@ table.dataTable tbody tr:hover {
                     <td>${reg.usuario || '-'}</td>
                     <td>
                         <button onclick='editar(${JSON.stringify(reg)})'>✏️</button>
-                        <button onclick='eliminar("${reg.id_activo}")'>🗑️</button>
+                      <button onclick='eliminar(this, "${reg.id_activo}")'>🗑️</button>
                     </td>
                 </tr>
                 `).join('');
@@ -389,7 +405,11 @@ function editar(reg) {
     document.getElementById('edit_notas').value = reg.notas;
 }
 
-        function guardarEdicion() {
+      function guardarEdicion() {
+    const btn = document.getElementById('btnGuardarEdit');
+    btn.disabled = true;
+    btn.innerHTML = 'Guardando <span class="spinner"></span>';
+
     const data = {
         action: "editar",
         id: document.getElementById('edit_id').value,
@@ -401,25 +421,33 @@ function editar(reg) {
         notas: document.getElementById('edit_notas').value
     };
 
-   fetch(URL_APP_SCRIPT, {
-    method: 'POST',
-    mode: 'no-cors',
-    body: JSON.stringify(data)
-})
+    fetch(URL_APP_SCRIPT, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: JSON.stringify(data)
+    })
     .then(() => {
         cerrarModal();
         cargarDatos();
+    })
+    .finally(() => {
+        btn.disabled = false;
+        btn.innerHTML = '💾 Guardar';
     });
 }
 
         function cerrarModal() {
     document.getElementById('modalEditar').style.display = "none";
 }
-function eliminar(id) {
+function eliminar(btn, id) {
     if (!confirm("¿Eliminar este registro?")) return;
+
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span>';
 
     fetch(URL_APP_SCRIPT, {
         method: 'POST',
+        mode: 'no-cors',
         body: JSON.stringify({
             action: "eliminar",
             id: id
@@ -454,7 +482,9 @@ function eliminar(id) {
         <input type="text" id="edit_usuario" placeholder="Usuario"><br>
         <input type="text" id="edit_notas" placeholder="Notas"><br><br>
 
-        <button onclick="guardarEdicion()" style="background:#4a86e8;">💾 Guardar</button>
+        <button id="btnGuardarEdit" onclick="guardarEdicion()" style="background:#4a86e8;">
+    💾 Guardar
+</button>
         <button onclick="cerrarModal()" style="background:#e74c3c;">❌ Cancelar</button>
 
     </div>
