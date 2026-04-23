@@ -475,14 +475,14 @@ function editar(reg) {
     fetch(URL_APP_SCRIPT, {
     method: 'POST',
     headers: {
-        "Content-Type": "application/json" // 🔥 CLAVE
+        "Content-Type": "application/json"
     },
     body: JSON.stringify(data)
 })
 .then(res => res.json())
 .then(res => {
 
-    console.log("RESPUESTA:", res); // 👈 DEBUG
+    console.log("RESPUESTA:", res);
 
     if (res.status === "error") {
         alert(res.mensaje);
@@ -499,11 +499,12 @@ function editar(reg) {
 .catch(err => {
     console.error(err);
     alert("❌ Error en la petición");
+})
+.finally(() => {   // 👈 SIN ;
+    btn.disabled = false;
+    btn.innerHTML = '💾 Guardar';
 });
-    .finally(() => {
-        btn.disabled = false;
-        btn.innerHTML = '💾 Guardar';
-    });
+
 }
 $('#filtroSerie').on('keyup', function() {
     dataTable.column(2).search(this.value).draw(); // SERIE
