@@ -228,7 +228,7 @@ table.dataTable tbody tr:hover {
             <div class="tab-btn active" onclick="openTab('registro')">📝 REGISTRO</div>
             <div class="tab-btn" onclick="openTab('consulta')">📊 LISTADO</div>
         </div>
-
+<div id="mensaje" style="display:none; padding:10px; border-radius:5px; margin-bottom:10px;"></div>
         <div id="registro" class="tab-content active">
             <form id="formInventario">
                 <div class="form-grid">
@@ -467,7 +467,17 @@ function editar(reg) {
         btn.innerHTML = '💾 Guardar';
     });
 }
+function mostrarMensaje(texto, tipo = "ok") {
+    const div = document.getElementById("mensaje");
+    div.style.display = "block";
+    div.innerText = texto;
 
+    div.style.background = tipo === "error" ? "#e74c3c" : "#2ecc71";
+
+    setTimeout(() => {
+        div.style.display = "none";
+    }, 3000);
+}
         function cerrarModal() {
     document.getElementById('modalEditar').style.display = "none";
 }
