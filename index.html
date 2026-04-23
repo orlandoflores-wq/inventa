@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Inventario TI - Responsive Dark</title>
+    <title>Inventario TI</title>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
@@ -422,6 +422,7 @@ function editar(reg) {
     document.getElementById('edit_piso').value = reg.piso;
     document.getElementById('edit_area').value = reg.area;
     document.getElementById('edit_usuario').value = reg.usuario;
+    document.getElementById('edit_estado').value = reg.usuario;
     document.getElementById('edit_notas').value = reg.notas;
 }
 
@@ -438,6 +439,7 @@ function editar(reg) {
         piso: document.getElementById('edit_piso').value,
         area: document.getElementById('edit_area').value,
         usuario: document.getElementById('edit_usuario').value,
+        estado: document.getElementById('edit_estado').value,
         notas: document.getElementById('edit_notas').value
     };
 
