@@ -455,13 +455,24 @@ function editar(reg) {
 
     fetch(URL_APP_SCRIPT, {
         method: 'POST',
-        mode: 'no-cors', // 🔥 clave
+       
         body: JSON.stringify(data)
     })
-    .then(() => {
+    .then(res => res.json())
+.then(res => {
+
+    if (res.status === "error") {
+        alert(res.mensaje); // 🔴 serie duplicada
+        return;
+    }
+
+    if (res.status === "editado") {
+        alert("✅ Registro actualizado");
         cerrarModal();
         cargarDatos();
-    })
+    }
+
+})
     .finally(() => {
         btn.disabled = false;
         btn.innerHTML = '💾 Guardar';
