@@ -505,7 +505,17 @@ function editar(reg) {
         btn.innerHTML = '💾 Guardar';
     });
 }
+$('#filtroSerie').on('keyup', function() {
+    dataTable.column(2).search(this.value).draw(); // SERIE
+});
 
+$('#filtroUsuario').on('keyup', function() {
+    dataTable.column(5).search(this.value).draw(); // USUARIO
+});
+
+$('#filtroEstado').on('change', function() {
+    dataTable.column(6).search(this.value).draw(); // ESTADO
+});
 
   
 function mostrarMensaje(texto, tipo = "ok") {
