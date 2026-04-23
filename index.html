@@ -24,7 +24,7 @@
             margin: 0 auto;
             background-color: var(--fondo-oscuro);
             box-sizing: border-box;
-            font-size: 16px; /* Previene zoom en iOS */
+            font-size: 16px;
         }
 
         .main-container {
@@ -34,7 +34,6 @@
 
         h1 { text-align: center; color: var(--azul-institucional); margin-bottom: 25px; }
 
-        /* Pestañas */
         .tabs { 
             display: flex; 
             gap: 10px; 
@@ -66,9 +65,8 @@
         .tab-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* FORMULARIO RESPONSIVE */
         #formInventario {
-            max-width: 800px; /* Un poco más ancho para aprovechar el escritorio */
+            max-width: 800px;
             margin: 0 auto;
             background: var(--fondo-paneles);
             padding: 30px;
@@ -76,20 +74,18 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        /* La magia del Grid: 1 columna por defecto (Móvil) */
         .form-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 15px;
         }
 
-        /* Excepción para escritorio: 2 columnas */
         @media (min-width: 768px) {
             .form-grid {
                 grid-template-columns: 1fr 1fr;
             }
             .full-width {
-                grid-column: span 2; /* Notas y botón ocupan todo el ancho */
+                grid-column: span 2;
             }
         }
 
@@ -119,288 +115,341 @@
             margin-top: 10px;
         }
 
-        /* TABLA Y CONTENEDOR */
-.header-tabla {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-#tablaInventario {
-    min-width: 900px; /* 👈 clave para scroll horizontal */
-}
-.tabla-container {
-    width: 100%;
-    overflow-x: auto; /* ✅ SCROLL LATERAL */
-    background: var(--fondo-paneles);
-    border-radius: 10px;
-    padding: 15px;
-    box-sizing: border-box;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
+        .header-tabla {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
 
-table.dataTable { 
-    width: 100% !important; 
-    margin: 0 !important; 
-}
+        #tablaInventario {
+            min-width: 900px;
+        }
 
-/* 🔥 HEADER MEJORADO */
-table.dataTable thead th { 
-    background-color: var(--azul-institucional) !important; 
-    padding: 14px 18px !important;
-    border-bottom: none !important; 
-    color: white !important; 
-    
-    white-space: nowrap;          /* 🔥 todo en una sola línea */
-    min-width: 150px;             /* 🔥 fuerza espacio */
-    text-align: left;
-}
+        .tabla-container {
+            width: 100%;
+            overflow-x: auto;
+            background: var(--fondo-paneles);
+            border-radius: 10px;
+            padding: 15px;
+            box-sizing: border-box;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
 
-/* 🔥 CELDAS */
-table.dataTable tbody td { 
-    padding: 14px 18px !important;
-    border-bottom: 1px solid #3e4b5b !important; 
-    white-space: nowrap;
-    min-width: 130px;
-}
+        table.dataTable { 
+            width: 100% !important; 
+            margin: 0 !important; 
+        }
 
-/* 👇 SOLO estas columnas pueden romper línea */
-td:nth-child(5),
-td:nth-child(6) {
-    white-space: normal !important;
-    word-break: break-word;
-    max-width: 220px;
-}
-/* FILAS */
-table.dataTable tbody tr {
-    border-bottom: 1px solid #4a5568;
-}
+        table.dataTable thead th { 
+            background-color: var(--azul-institucional) !important; 
+            padding: 14px 18px !important;
+            border-bottom: none !important; 
+            color: white !important; 
+            white-space: nowrap;
+            min-width: 150px;
+            text-align: left;
+        }
 
-table.dataTable tbody tr:hover {
-    background-color: #374151;
-}
+        table.dataTable tbody td { 
+            padding: 14px 18px !important;
+            border-bottom: 1px solid #3e4b5b !important; 
+            white-space: nowrap;
+            min-width: 130px;
+        }
 
-/* 🔥 AJUSTE CLAVE PARA CELULAR */
-@media (max-width: 600px) {
+        td:nth-child(5),
+        td:nth-child(6) {
+            white-space: normal !important;
+            word-break: break-word;
+            max-width: 220px;
+        }
 
-    table.dataTable thead th {
-        font-size: 0.85rem;
-        padding: 12px 14px !important;
-    }
+        table.dataTable tbody tr {
+            border-bottom: 1px solid #4a5568;
+        }
 
-    table.dataTable tbody td {
-        font-size: 0.85rem;
-        padding: 12px 14px !important;
-    }
+        table.dataTable tbody tr:hover {
+            background-color: #374151;
+        }
 
-    /* 👇 fuerza mejor separación horizontal */
-    table.dataTable thead th,
-    table.dataTable tbody td {
-        min-width: 120px;
-    }
-}
+        @media (max-width: 600px) {
+            table.dataTable thead th {
+                font-size: 0.85rem;
+                padding: 12px 14px !important;
+            }
+            table.dataTable tbody td {
+                font-size: 0.85rem;
+                padding: 12px 14px !important;
+            }
+            table.dataTable thead th,
+            table.dataTable tbody td {
+                min-width: 120px;
+            }
+        }
 
         .spinner {
-    border: 3px solid rgba(255,255,255,0.2);
-    border-top: 3px solid white;
-    border-radius: 50%;
-    width: 16px;
-    height: 16px;
-    animation: spin 0.7s linear infinite;
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 5px;
-}
+            border: 3px solid rgba(255,255,255,0.2);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            animation: spin 0.7s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
 
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ── MODAL FIXES ── */
+        #modalEditar input,
+        #modalEditar select,
+        #modalEditar textarea {
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        #modalEditar button {
+            margin-right: 8px;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+        }
     </style>
 </head>
 <body>
 
-    <div class="main-container">
-        <h1>Inventario TI</h1>
+<div class="main-container">
+    <h1>Inventario TI</h1>
 
-        <div class="tabs">
-            <div class="tab-btn active" onclick="openTab('registro')">📝 REGISTRO</div>
-            <div class="tab-btn" onclick="openTab('consulta')">📊 LISTADO</div>
-        </div>
-<div id="mensaje" style="display:none; padding:10px; border-radius:5px; margin-bottom:10px;"></div>
-        <div id="registro" class="tab-content active">
-            <form id="formInventario">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label>Nombre de Equipo</label>
-                        <input type="text" name="pc_nombre" placeholder="Ej: PC-VENTAS-01" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Número de Serie</label>
-                        <input type="text" name="serie" placeholder="S/N: XXXXXXXX" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Ubicación</label>
-                        <select name="piso" required>
-                            <option value="" disabled selected>Seleccione el piso...</option>
-                            <option value="Piso 1">Piso 1</option>
-                            <option value="Piso 2">Piso 2</option>
-                            <option value="Piso 3">Piso 3</option>
-                            <option value="Piso 4">Piso 4</option>
-                            <option value="Piso 5">Piso 5</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Área</label>
-                        <input type="text" name="area" placeholder="Ej: Recursos Humanos" required>
-                    </div>
-                    
-                    <div class="form-group full-width">
-                        <label>Usuario Responsable</label>
-                        <input type="text" name="usuario" placeholder="Nombre del trabajador" required>
-                    </div>
-                    <div class="form-group full-width">
-                        <label>Estado</label>
-                        <select name="estado" required>
-                            <option value="" disabled selected>Seleccione estado...</option>
-                            <option value="ACTIVO">ACTIVO</option>
-                            <option value="INACTIVO">INACTIVO</option>
-                         
-                        </select>
-                    </div>
-                    
-                    <div class="form-group full-width">
-                        <label>Notas Técnicas</label>
-                        <textarea name="notas" rows="3" placeholder="RAM, Procesador, estado..."></textarea>
-                    </div>
+    <div class="tabs">
+        <div class="tab-btn active" onclick="openTab('registro')">📝 REGISTRO</div>
+        <div class="tab-btn" onclick="openTab('consulta')">📊 LISTADO</div>
+    </div>
+
+    <div id="mensaje" style="display:none; padding:10px; border-radius:5px; margin-bottom:10px;"></div>
+
+    <!-- ══════════════ PESTAÑA REGISTRO ══════════════ -->
+    <div id="registro" class="tab-content active">
+        <form id="formInventario">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Nombre de Equipo</label>
+                    <input type="text" name="pc_nombre" placeholder="Ej: PC-VENTAS-01" required>
                 </div>
                 
-                <button type="submit" id="btnEnviar" class="full-width">💾 GUARDAR REGISTRO</button>
-            </form>
+                <div class="form-group">
+                    <label>Número de Serie</label>
+                    <input type="text" name="serie" placeholder="S/N: XXXXXXXX" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Ubicación</label>
+                    <select name="piso" required>
+                        <option value="" disabled selected>Seleccione el piso...</option>
+                        <option value="Piso 1">Piso 1</option>
+                        <option value="Piso 2">Piso 2</option>
+                        <option value="Piso 3">Piso 3</option>
+                        <option value="Piso 4">Piso 4</option>
+                        <option value="Piso 5">Piso 5</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Área</label>
+                    <input type="text" name="area" placeholder="Ej: Recursos Humanos" required>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label>Usuario Responsable</label>
+                    <input type="text" name="usuario" placeholder="Nombre del trabajador" required>
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Estado</label>
+                    <select name="estado" required>
+                        <option value="" disabled selected>Seleccione estado...</option>
+                        <option value="ACTIVO">ACTIVO</option>
+                        <option value="INACTIVO">INACTIVO</option>
+                    </select>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label>Notas Técnicas</label>
+                    <textarea name="notas" rows="3" placeholder="RAM, Procesador, estado..."></textarea>
+                </div>
+            </div>
+            
+            <button type="submit" id="btnEnviar" class="full-width">💾 GUARDAR REGISTRO</button>
+        </form>
+    </div>
+
+    <!-- ══════════════ PESTAÑA CONSULTA ══════════════ -->
+    <div id="consulta" class="tab-content">
+        <div class="header-tabla">
+            <h3 style="margin: 0; color: white;">Equipos Registrados</h3>
+            <button onclick="cargarDatos()" class="btn btn-success">🔄 ACTUALIZAR</button>
+        </div>
+        
+        <div id="loader" style="display:none; color:white; margin-bottom:10px;">⏳ Sincronizando datos...</div>
+
+        <div style="margin-bottom:10px; display:flex; gap:8px; flex-wrap:wrap;">
+            <input type="text" id="filtroEquipo" placeholder="🖥️ Buscar por equipo" style="flex:1; min-width:150px;">
+            <input type="text" id="filtroSerie" placeholder="🔍 Buscar por serie" style="flex:1; min-width:150px;">
+            <input type="text" id="filtroUsuario" placeholder="👤 Buscar por usuario" style="flex:1; min-width:150px;">
+            <select id="filtroEstado" style="flex:1; min-width:120px;">
+                <option value="">Todos los estados</option>
+                <option value="ACTIVO">ACTIVO</option>
+                <option value="INACTIVO">INACTIVO</option>
+            </select>
         </div>
 
-     <div id="consulta" class="tab-content">
-    <div class="header-tabla">
-        <h3 style="margin: 0; color: white;">Equipos Registrados</h3>
-      <button onclick="cargarDatos()" class="btn btn-success">
-    🔄 ACTUALIZAR
-</button>
-    </div>
-    
-    <div id="loader" class="loading" style="display:none;">
-        ⏳ Sincronizando datos...
-    </div>
-         <div style="margin-bottom:10px;">
-    <input type="text" id="filtroSerie" placeholder="Buscar por serie">
-    <input type="text" id="filtroUsuario" placeholder="Buscar por usuario">
-    <select id="filtroEstado">
-        <option value="">Todos</option>
-        <option value="ACTIVO">ACTIVO</option>
-        <option value="INACTIVO">INACTIVO</option>
-    </select>
-</div>
-    <div class="tabla-container table-responsive">
-        <!-- 🔥 SIN nowrap -->
-        <table id="tablaInventario" class="table table-dark table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>ID ACTIVO</th>
-                    <th>EQUIPO</th>
-                    <th>SERIE</th>
-                    <th>PISO</th>
-                    <th>ÁREA</th>
-                    <th>USUARIO</th>
-                    <th>ESTADO</th>
-                    <th>ACCIONES</th>
-                </tr>
-            </thead>
-            <tbody id="cuerpoTabla"></tbody>
-        </table>
+        <div class="tabla-container table-responsive">
+            <table id="tablaInventario" class="table table-dark table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID ACTIVO</th>
+                        <th>EQUIPO</th>
+                        <th>SERIE</th>
+                        <th>PISO</th>
+                        <th>ÁREA</th>
+                        <th>USUARIO</th>
+                        <th>ESTADO</th>
+                        <th>ACCIONES</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoTabla"></tbody>
+            </table>
+        </div>
     </div>
 </div>
 
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+<!-- ══════════════ MODAL EDITAR ══════════════ -->
+<div id="modalEditar" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:9999;">
+    <div style="background:#2d3748; padding:25px; border-radius:10px; width:90%; max-width:500px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+        <h3 style="color:white; margin-top:0;">✏️ Editar Registro</h3>
+
+        <input type="hidden" id="edit_id">
+
+        <input type="text" id="edit_pc" placeholder="Nombre PC">
+        <input type="text" id="edit_serie" placeholder="Serie">
+        <select id="edit_piso">
+            <option value="">Seleccione el piso...</option>
+            <option value="Piso 1">Piso 1</option>
+            <option value="Piso 2">Piso 2</option>
+            <option value="Piso 3">Piso 3</option>
+            <option value="Piso 4">Piso 4</option>
+            <option value="Piso 5">Piso 5</option>
+        </select>
+        <input type="text" id="edit_area" placeholder="Área">
+        <input type="text" id="edit_usuario" placeholder="Usuario">
+        <select id="edit_estado">
+            <option value="">Seleccione estado...</option>
+            <option value="ACTIVO">ACTIVO</option>
+            <option value="INACTIVO">INACTIVO</option>
+        </select>
+        <input type="text" id="edit_notas" placeholder="Notas">
+
+        <div style="margin-top:15px;">
+            <button id="btnGuardarEdit" onclick="guardarEdicion()" style="background:#4a86e8;">💾 Guardar</button>
+            <button onclick="cerrarModal()" style="background:#e74c3c;">❌ Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════ SCRIPTS ══════════════ -->
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
-    <script>
-        const URL_APP_SCRIPT = "https://script.google.com/macros/s/AKfycby_c5eCrb27fWb-sOdprSX3yeRqmGGUpI3xDUMhozzx-WMsJF2odm3adyUHstHVbATp/exec"; 
+<script>
+    const URL_APP_SCRIPT = "https://script.google.com/macros/s/AKfycby_c5eCrb27fWb-sOdprSX3yeRqmGGUpI3xDUMhozzx-WMsJF2odm3adyUHstHVbATp/exec";
 
-        function openTab(tabId) {
-            $('.tab-content').removeClass('active');
-            $('.tab-btn').removeClass('active');
-            $(`#${tabId}`).addClass('active');
-            $(`.tab-btn[onclick="openTab('${tabId}')"]`).addClass('active');
-            if(tabId === 'consulta') cargarDatos();
-        }
-
-   document.getElementById('formInventario').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const btn = document.getElementById('btnEnviar');
-    btn.disabled = true;
-    btn.innerText = "ENVIANDO...";
-
-    const formData = new FormData(this);
-    const data = Object.fromEntries(formData);
-
-    // Detectar si es edición
-    const id = this.dataset.id;
-
-    if (id) {
-        data.action = "editar";
-        data.id = id;
-    } else {
-        data.action = "crear";
+    /* ── PESTAÑAS ── */
+    function openTab(tabId) {
+        $('.tab-content').removeClass('active');
+        $('.tab-btn').removeClass('active');
+        $('#' + tabId).addClass('active');
+        $('.tab-btn[onclick="openTab(\'' + tabId + '\')"]').addClass('active');
+        if (tabId === 'consulta') cargarDatos();
     }
 
-    fetch(URL_APP_SCRIPT, {
-        method: 'POST',
-        
-        body: JSON.stringify(data)
-    })
-    .then(res => res.json())
-.then(res => {
-
-    if (res.status === "error") {
-        alert(res.mensaje); // 🔴 serie duplicada
-        return;
+    /* ── MENSAJE GLOBAL ── */
+    function mostrarMensaje(texto, tipo) {
+        const div = document.getElementById("mensaje");
+        div.style.display = "block";
+        div.innerText = texto;
+        div.style.background = tipo === "error" ? "#e74c3c" : "#2ecc71";
+        setTimeout(() => { div.style.display = "none"; }, 3000);
     }
 
-    if (res.status === "creado") {
-        alert("✅ Guardado correctamente");
-        this.reset();
-        delete this.dataset.id;
-        cargarDatos();
-    }
+    /* ══════════════════════════════════════
+       CREAR REGISTRO
+    ══════════════════════════════════════ */
+    document.getElementById('formInventario').addEventListener('submit', function(e) {
+        e.preventDefault();
 
-})
-    .catch(err => {
-        console.error(err);
-        alert("❌ Error");
-    })
-    .finally(() => {
-        btn.disabled = false;
-        btn.innerText = "💾 GUARDAR REGISTRO";
+        const btn = document.getElementById('btnEnviar');
+        btn.disabled = true;
+        btn.innerText = "ENVIANDO...";
+
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData);
+        data.action = "crear";   // siempre crear desde el formulario principal
+
+        fetch(URL_APP_SCRIPT, {
+            method: 'POST',
+            body: JSON.stringify(data)   // Sin Content-Type: Apps Script acepta text/plain sin preflight CORS
+        })
+        .then(res => res.json())
+        .then(res => {
+            if (res.status === "error") {
+                mostrarMensaje("❌ " + res.mensaje, "error");
+                return;
+            }
+            if (res.status === "creado") {
+                mostrarMensaje("✅ Guardado correctamente", "ok");
+                this.reset();
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            mostrarMensaje("❌ Error de conexión", "error");
+        })
+        .finally(() => {
+            btn.disabled = false;
+            btn.innerText = "💾 GUARDAR REGISTRO";
+        });
     });
-});
 
-        let dataTable;
-        async function cargarDatos() {
-            $('#loader').show();
-            try {
-                const response = await fetch(`${URL_APP_SCRIPT}?read=true`);
-                const data = await response.json();
-                
-                if (dataTable) dataTable.destroy();
-                
-                const html = data.map(reg => `
+    /* ══════════════════════════════════════
+       CARGAR DATOS + DATATABLES
+    ══════════════════════════════════════ */
+    let dataTable = null;
+
+    async function cargarDatos() {
+        $('#loader').show();
+        try {
+            const response = await fetch(URL_APP_SCRIPT + "?read=true");
+            const data = await response.json();
+
+            // Destruir instancia previa antes de reconstruir el tbody
+            if (dataTable) {
+                dataTable.destroy();
+                dataTable = null;
+            }
+
+            const html = data.map(reg => `
                 <tr>
                     <td><span style="color:#4a86e8;font-weight:bold;">${reg.id_activo || '-'}</span></td>
                     <td>${reg.nombre_de_pc || '-'}</td>
@@ -410,184 +459,145 @@ table.dataTable tbody tr:hover {
                     <td>${reg.usuario || '-'}</td>
                     <td>${reg.estado || '-'}</td>
                     <td>
-                      <button class="btn btn-sm btn-warning" onclick='editar(${JSON.stringify(reg)})'>✏️</button>
-<button class="btn btn-sm btn-danger" onclick='eliminar(this, "${reg.id_activo}")'>🗑️</button>
+                        <button class="btn btn-sm btn-warning" onclick='editar(${JSON.stringify(reg)})'>✏️</button>
+                        <button class="btn btn-sm btn-danger" onclick='eliminar(this, "${reg.id_activo}")'>🗑️</button>
                     </td>
                 </tr>
-                `).join('');
-                
-                document.getElementById('cuerpoTabla').innerHTML = html;
-                
-        dataTable = $('#tablaInventario').DataTable({
-    scrollX: true,
-    autoWidth: true,   // 🔥 importante
-    responsive: false,
+            `).join('');
 
-    language: { 
-        url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
-    },
-    pageLength: 10,
-    dom: 'Bftp',
-buttons: [
-    {
-        extend: 'excelHtml5',
-        text: '📥 Exportar Excel',
-        title: 'Inventario_TI'
-    }
-]
-});
-            } catch (error) {
-                console.error(error);
-            } finally {
-                $('#loader').hide();
-            }
+            document.getElementById('cuerpoTabla').innerHTML = html;
+
+            dataTable = $('#tablaInventario').DataTable({
+                scrollX: true,
+                autoWidth: true,
+                responsive: false,
+                language: { url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json' },
+                pageLength: 10,
+                dom: 'Btp',
+                               buttons: [{
+                    extend: 'excelHtml5',
+                    text: '📥 Exportar Excel',
+                    title: '',
+                    exportOptions: {
+                        columns: ':not(:last-child)' // ❌ excluye ACCIONES
+                    }
+                }]
+            });
+
+            /* ── Filtros: solo vincular tras crear DataTable ── */   // ✅ FIX: evita "dataTable is null"
+            vincularFiltros();
+
+        } catch (error) {
+            console.error(error);
+            mostrarMensaje("❌ Error al cargar datos", "error");
+        } finally {
+            $('#loader').hide();
         }
-function editar(reg) {
-    document.getElementById('modalEditar').style.display = "flex";
-
-    document.getElementById('edit_id').value = reg.id_activo;
-    document.getElementById('edit_pc').value = reg.nombre_de_pc;
-    document.getElementById('edit_serie').value = reg.serie;
-    document.getElementById('edit_piso').value = reg.piso;
-    document.getElementById('edit_area').value = reg.area;
-    document.getElementById('edit_usuario').value = reg.usuario;
-    document.getElementById('edit_estado').value = reg.estado;
-    document.getElementById('edit_notas').value = reg.notas;
-}
-
-      function guardarEdicion() {
-    const btn = document.getElementById('btnGuardarEdit');
-    btn.disabled = true;
-    btn.innerHTML = 'Guardando <span class="spinner"></span>';
-
-    const data = {
-        action: "editar",
-        id: document.getElementById('edit_id').value,
-        pc_nombre: document.getElementById('edit_pc').value,
-        serie: document.getElementById('edit_serie').value,
-        piso: document.getElementById('edit_piso').value,
-        area: document.getElementById('edit_area').value,
-        usuario: document.getElementById('edit_usuario').value,
-        estado: document.getElementById('edit_estado').value,
-        notas: document.getElementById('edit_notas').value
-    };
-
-    fetch(URL_APP_SCRIPT, {
-    method: 'POST',
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
-})
-.then(res => res.json())
-.then(res => {
-
-    console.log("RESPUESTA:", res);
-
-    if (res.status === "error") {
-        alert(res.mensaje);
-        return;
     }
 
-    if (res.status === "editado") {
-        alert("✅ Registro actualizado");
-        cerrarModal();
-        cargarDatos();
+    /* Vincular filtros al DataTable activo (se llama cada vez que se reconstruye) */
+    function vincularFiltros() {
+        $('#filtroEquipo').off('keyup').on('keyup', function() {
+            dataTable.column(1).search(this.value).draw();
+        });
+        $('#filtroSerie').off('keyup').on('keyup', function() {
+            dataTable.column(2).search(this.value).draw();
+        });
+        $('#filtroUsuario').off('keyup').on('keyup', function() {
+            dataTable.column(5).search(this.value).draw();
+        });
+        $('#filtroEstado').off('change').on('change', function() {
+            dataTable.column(6).search(this.value).draw();
+        });
     }
 
-})
-.catch(err => {
-    console.error(err);
-    alert("❌ Error en la petición");
-})
-.finally(() => {   // 👈 SIN ;
-    btn.disabled = false;
-    btn.innerHTML = '💾 Guardar';
-});
+    /* ══════════════════════════════════════
+       EDITAR
+    ══════════════════════════════════════ */
+    function editar(reg) {
+        document.getElementById('modalEditar').style.display = "flex";
+        document.getElementById('edit_id').value      = reg.id_activo;
+        document.getElementById('edit_pc').value      = reg.nombre_de_pc;
+        document.getElementById('edit_serie').value   = reg.serie;
+        document.getElementById('edit_piso').value    = reg.piso;
+        document.getElementById('edit_area').value    = reg.area;
+        document.getElementById('edit_usuario').value = reg.usuario;
+        document.getElementById('edit_estado').value  = reg.estado;
+        document.getElementById('edit_notas').value   = reg.notas;
+    }
 
-}
-$('#filtroSerie').on('keyup', function() {
-    dataTable.column(2).search(this.value).draw(); // SERIE
-});
+    function guardarEdicion() {
+        const btn = document.getElementById('btnGuardarEdit');
+        btn.disabled = true;
+        btn.innerHTML = 'Guardando <span class="spinner"></span>';
 
-$('#filtroUsuario').on('keyup', function() {
-    dataTable.column(5).search(this.value).draw(); // USUARIO
-});
+        const data = {
+            action:    "editar",
+            id:        document.getElementById('edit_id').value,
+            pc_nombre: document.getElementById('edit_pc').value,
+            serie:     document.getElementById('edit_serie').value,
+            piso:      document.getElementById('edit_piso').value,
+            area:      document.getElementById('edit_area').value,
+            usuario:   document.getElementById('edit_usuario').value,
+            estado:    document.getElementById('edit_estado').value,
+            notas:     document.getElementById('edit_notas').value
+        };
 
-$('#filtroEstado').on('change', function() {
-    dataTable.column(6).search(this.value).draw(); // ESTADO
-});
-
-  
-function mostrarMensaje(texto, tipo = "ok") {
-    const div = document.getElementById("mensaje");
-    div.style.display = "block";
-    div.innerText = texto;
-
-    div.style.background = tipo === "error" ? "#e74c3c" : "#2ecc71";
-
-    setTimeout(() => {
-        div.style.display = "none";
-    }, 3000);
-}
-        function cerrarModal() {
-    document.getElementById('modalEditar').style.display = "none";
-}
-function eliminar(btn, id) {
-    if (!confirm("¿Eliminar este registro?")) return;
-
-    btn.disabled = true;
-    btn.innerHTML = '<span class="spinner"></span>';
-
-    fetch(URL_APP_SCRIPT, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: JSON.stringify({
-            action: "eliminar",
-            id: id
+        fetch(URL_APP_SCRIPT, {
+            method: 'POST',
+            body: JSON.stringify(data)
         })
-    })
-    .then(() => {
-        cargarDatos();
-    });
-}
-        
-    </script>
+        .then(res => res.json())
+        .then(res => {
+            if (res.status === "error") {
+                mostrarMensaje("❌ " + res.mensaje, "error");
+                return;
+            }
+            if (res.status === "editado") {
+                mostrarMensaje("✅ Registro actualizado", "ok");
+                cerrarModal();
+                cargarDatos();
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            mostrarMensaje("❌ Error en la petición", "error");
+        })
+        .finally(() => {
+            btn.disabled = false;
+            btn.innerHTML = '💾 Guardar';
+        });
+    }
 
-        <div id="modalEditar" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:9999;">
-    
-    <div style="background:#2d3748; padding:20px; border-radius:10px; width:90%; max-width:500px;">
-        
-        <h3 style="color:white;">✏️ Editar Registro</h3>
+    function cerrarModal() {
+        document.getElementById('modalEditar').style.display = "none";
+    }
 
-        <input type="hidden" id="edit_id">
+    /* ══════════════════════════════════════
+       ELIMINAR
+    ══════════════════════════════════════ */
+    function eliminar(btn, id) {
+        if (!confirm("¿Eliminar este registro?")) return;
 
-        <input type="text" id="edit_pc" placeholder="Nombre PC"><br>
-        <input type="text" id="edit_serie" placeholder="Serie"><br>
-       <select id="edit_piso">
-    <option value="">Seleccione el piso...</option>
-    <option value="Piso 1">Piso 1</option>
-    <option value="Piso 2">Piso 2</option>
-    <option value="Piso 3">Piso 3</option>
-    <option value="Piso 4">Piso 4</option>
-    <option value="Piso 5">Piso 5</option>
-</select><br>
-        <input type="text" id="edit_area" placeholder="Área"><br>
-        <input type="text" id="edit_usuario" placeholder="Usuario"><br>
-          <select id="edit_estado">
-    <option value="">Seleccione estado...</option>
-    <option value="ACTIVO">ACTIVO</option>
-    <option value="INACTIVO">INACTIVO</option>
-    
-</select><br>
-        <input type="text" id="edit_notas" placeholder="Notas"><br><br>
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner"></span>';
 
-        <button id="btnGuardarEdit" onclick="guardarEdicion()" style="background:#4a86e8;">
-    💾 Guardar
-</button>
-        <button onclick="cerrarModal()" style="background:#e74c3c;">❌ Cancelar</button>
+        fetch(URL_APP_SCRIPT, {
+            method: 'POST',
+            mode: 'no-cors',
+            body: JSON.stringify({ action: "eliminar", id: id })
+        })
+        .then(() => {
+            cargarDatos();
+        })
+        .catch(err => {
+            console.error(err);
+            btn.disabled = false;
+            btn.innerHTML = '🗑️';
+            mostrarMensaje("❌ Error al eliminar", "error");
+        });
+    }
+</script>
 
-    </div>
-</div>
 </body>
 </html>
