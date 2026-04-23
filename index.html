@@ -480,12 +480,7 @@ function editar(reg) {
 }
 
 
-   if (serieExiste(datos.serie, datos.id)) {
-  return ContentService.createTextOutput(JSON.stringify({
-    status: "error",
-    mensaje: "⚠️ La serie ya existe en otro registro"
-  }));
-}     
+  
 function mostrarMensaje(texto, tipo = "ok") {
     const div = document.getElementById("mensaje");
     div.style.display = "block";
