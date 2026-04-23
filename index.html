@@ -454,15 +454,19 @@ function editar(reg) {
     };
 
     fetch(URL_APP_SCRIPT, {
-        method: 'POST',
-       
-        body: JSON.stringify(data)
-    })
-    .then(res => res.json())
+    method: 'POST',
+    headers: {
+        "Content-Type": "application/json" // 🔥 CLAVE
+    },
+    body: JSON.stringify(data)
+})
+.then(res => res.json())
 .then(res => {
 
+    console.log("RESPUESTA:", res); // 👈 DEBUG
+
     if (res.status === "error") {
-        alert(res.mensaje); // 🔴 serie duplicada
+        alert(res.mensaje);
         return;
     }
 
@@ -473,6 +477,10 @@ function editar(reg) {
     }
 
 })
+.catch(err => {
+    console.error(err);
+    alert("❌ Error en la petición");
+});
     .finally(() => {
         btn.disabled = false;
         btn.innerHTML = '💾 Guardar';
