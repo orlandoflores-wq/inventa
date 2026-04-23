@@ -294,6 +294,15 @@ table.dataTable tbody tr:hover {
     <div id="loader" class="loading" style="display:none;">
         ⏳ Sincronizando datos...
     </div>
+         <div style="margin-bottom:10px;">
+    <input type="text" id="filtroSerie" placeholder="Buscar por serie">
+    <input type="text" id="filtroUsuario" placeholder="Buscar por usuario">
+    <select id="filtroEstado">
+        <option value="">Todos</option>
+        <option value="ACTIVO">ACTIVO</option>
+        <option value="INACTIVO">INACTIVO</option>
+    </select>
+</div>
     <div class="tabla-container table-responsive">
         <!-- 🔥 SIN nowrap -->
         <table id="tablaInventario" class="table table-dark table-striped table-bordered">
@@ -316,6 +325,9 @@ table.dataTable tbody tr:hover {
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
     <script>
         const URL_APP_SCRIPT = "https://script.google.com/macros/s/AKfycby_c5eCrb27fWb-sOdprSX3yeRqmGGUpI3xDUMhozzx-WMsJF2odm3adyUHstHVbATp/exec"; 
@@ -415,7 +427,14 @@ table.dataTable tbody tr:hover {
         url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
     },
     pageLength: 10,
-    dom: 'ftp'
+    dom: 'Bftp',
+buttons: [
+    {
+        extend: 'excelHtml5',
+        text: '📥 Exportar Excel',
+        title: 'Inventario_TI'
+    }
+]
 });
             } catch (error) {
                 console.error(error);
